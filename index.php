@@ -5,14 +5,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Facebook</title>
 	<link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/dropzone.min.css" integrity="sha512-jU/7UFiaW5UBGODEopEqnbIAHOI8fO6T99m7Tsmqs2gkdujByJfkCbbfPSN4Wlqlb9TGnsuC0YgUgWkRBK7B9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.js" integrity="sha512-VQQXLthlZQO00P+uEu4mJ4G4OAgqTtKG1hri56kQY1DtdLeIqhKUp9W/lllDDu3uN3SnUNawpW7lBda8+dSi7w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 	<script>
 		$(document).on("click","#btn_publicar",()=>{
           const user=$("#pub_usuario").val();
           const desc=$("#pub_descripcion").val();
           const est=$("#pub_estado").val();
 
-        $.ajax({
+        $.ajax({ 
           url:'acciones_publicaciones.php',
           data:{user:user,desc:desc,est:est},
           type:'POST',
@@ -96,3 +100,11 @@
 
 </body>
 </html>
+<script>
+  Dropzone.options.pub_imagen = {
+    paramName: "file",
+    maxFilesize: 2,
+    accept: function(file, done){ 
+    }
+  };
+</script>

@@ -61,7 +61,7 @@
             <option value="Molesto">Molesto</option>
           </select>
           <div class="d-grid gap-2">
-            <button class="btn btn-primary" id="btn_publicar" >Publicar</button>
+            <button class="btn btn-danger" id="btn_publicar" >Publicar</button>
           </div>
         </div>
         <div class="col-md-6">
@@ -74,7 +74,7 @@
     <div class="row">
         <div class="col-md-4">
         <div class="card cont_publicacion"  style="width: 12rem;">
-              <img src="no_foto.jpg" class="card-img-top" id="aux_img" alt="...">
+              <img src="no_imagen.png" class="card-img-top" id="aux_img" alt="...">
               <div class="card-body">
                     <h3 id="estado">Estado</h3>
                 <p class="card-text" id="publicacion" >Descripcion</p>
@@ -86,13 +86,15 @@
 </body>
 </html>
 <script>
-var myDropzone = new Dropzone("#dropz", {
-    url: "acciones_publicaciones.php",
-         dictDefaultMessage: 'Arrastre el archivo aquí o haga clic para cargar',
-         paramName: "file",
+new Dropzone("#pub_img", {
+    url: 'acciones_publicaciones.php',
+    dictDefaultMessage: 'Arrastre el archivo aquí o haga clic para cargar', // Establezca la declaración de solicitud predeterminada
+    paramName: "file", // El nombre del parámetro pasado al fondo
     init: function () {
+        this.on("sending", function(file, xhr, formData){
+            formData.append("aux_id",$("#aux_id").val() );
+        });
         this.on("success", function (file, data) {
-            console.log(data);
             $("#aux_img").attr('src',`img/${data}`)
         });
     }

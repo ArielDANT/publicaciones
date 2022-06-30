@@ -6,7 +6,10 @@ class conexion
 	{
 		$this->conection=mysqli_connect('localhost','root','','facebook');  
 	}
+
+
 }
+
 
 
 ?> 
